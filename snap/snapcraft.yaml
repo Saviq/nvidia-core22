@@ -1,10 +1,10 @@
-name: nvidia-core22
-base: core22
+name: nvidia-core24
+base: core24
 adopt-info: version
-summary: NVIDIA and Mesa libraries for core22 snaps
+summary: NVIDIA and Mesa libraries for core24 snaps
 description: |
   Content snap that provides NVIDIA and Mesa libraries for `base:
-  core22` snaps.
+  core24` snaps.
 compression: lzo
 grade: stable
 license: Proprietary
@@ -159,7 +159,7 @@ parts:
         cd ${CRAFT_PRIME}
         # Everything that is indeed staged
         find usr -type f,l
-      ) | sort -u > ${CRAFT_PRIME}/snap/${CRAFT_TARGET_ARCH}.list
+      ) | sort -u > ${CRAFT_PRIME}/snap/${CRAFT_ARCH_BUILD_FOR}.list
 
   scripts:
     after: [file-list]
@@ -173,11 +173,11 @@ apps:
       - opengl
 
 slots:
-  graphics-core22:
+  graphics-core24:
     interface: content
     source:
       read:
-        # Required at the top-level by graphics-core22
+        # Required at the top-level by graphics-core24
         - $SNAP/bin
         - $SNAP/usr/share/drirc.d
         - $SNAP/usr/share/libdrm
